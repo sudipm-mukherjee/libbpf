@@ -1,0 +1,5 @@
+libbpf (0.0.6-1) unstable; urgency=medium
+
+  * Package from github. (Closes: #948041)
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Sat, 11 Apr 2020 16:12:37 +0100
