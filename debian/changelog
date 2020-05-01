@@ -1,3 +1,11 @@
+libbpf (0.0.8-1) unstable; urgency=medium
+
+  * Update from upstream v0.0.8
+  * Update symbols file.
+  * Update compat level to 13.
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Fri, 01 May 2020 09:44:49 +0100
+
 libbpf (0.0.6-1) unstable; urgency=medium
 
   * Package from github. (Closes: #948041)
