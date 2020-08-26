@@ -8,6 +8,7 @@ libbpf.so.0 libbpf0 #MINVER#
  LIBBPF_0.0.7@LIBBPF_0.0.7 1:0.0.8
  LIBBPF_0.0.8@LIBBPF_0.0.8 1:0.0.8
  LIBBPF_0.0.9@LIBBPF_0.0.9 1:0.0.9
+ LIBBPF_0.1.0@LIBBPF_0.1.0 1:0.1.0
  bpf_btf_get_fd_by_id@LIBBPF_0.0.1 5.2.6
  bpf_btf_get_next_id@LIBBPF_0.0.5 5.4
  bpf_create_map@LIBBPF_0.0.1 5.2.6
@@ -21,6 +22,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_get_link_xdp_info@LIBBPF_0.0.6 5.5
  bpf_iter_create@LIBBPF_0.0.9 1:0.0.9
  bpf_link__destroy@LIBBPF_0.0.4 5.3
+ bpf_link__detach@LIBBPF_0.1.0 1:0.1.0
  bpf_link__disconnect@LIBBPF_0.0.7 1:0.0.8
  bpf_link__fd@LIBBPF_0.0.8 1:0.0.8
  bpf_link__open@LIBBPF_0.0.8 1:0.0.8
@@ -29,6 +31,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_link__unpin@LIBBPF_0.0.8 1:0.0.8
  bpf_link__update_program@LIBBPF_0.0.8 1:0.0.8
  bpf_link_create@LIBBPF_0.0.8 1:0.0.8
+ bpf_link_detach@LIBBPF_0.1.0 1:0.1.0
  bpf_link_get_fd_by_id@LIBBPF_0.0.9 1:0.0.9
  bpf_link_get_next_id@LIBBPF_0.0.9 1:0.0.9
  bpf_link_update@LIBBPF_0.0.8 1:0.0.8
@@ -41,11 +44,16 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_map__def@LIBBPF_0.0.1 5.2.6
  bpf_map__fd@LIBBPF_0.0.1 5.2.6
  bpf_map__get_pin_path@LIBBPF_0.0.6 5.5
+ bpf_map__ifindex@LIBBPF_0.1.0 1:0.1.0
  bpf_map__is_internal@LIBBPF_0.0.3 5.2.6
  bpf_map__is_offload_neutral@LIBBPF_0.0.1 5.2.6
  bpf_map__is_pinned@LIBBPF_0.0.6 5.5
+ bpf_map__key_size@LIBBPF_0.1.0 1:0.1.0
+ bpf_map__map_flags@LIBBPF_0.1.0 1:0.1.0
+ bpf_map__max_entries@LIBBPF_0.1.0 1:0.1.0
  bpf_map__name@LIBBPF_0.0.1 5.2.6
  bpf_map__next@LIBBPF_0.0.1 5.2.6
+ bpf_map__numa_node@LIBBPF_0.1.0 1:0.1.0
  bpf_map__pin@LIBBPF_0.0.1 5.2.6
  bpf_map__prev@LIBBPF_0.0.1 5.2.6
  bpf_map__priv@LIBBPF_0.0.1 5.2.6
@@ -54,9 +62,17 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_map__set_ifindex@LIBBPF_0.0.1 5.2.6
  bpf_map__set_initial_value@LIBBPF_0.0.8 1:0.0.8
  bpf_map__set_inner_map_fd@LIBBPF_0.0.1 5.2.6
+ bpf_map__set_key_size@LIBBPF_0.1.0 1:0.1.0
+ bpf_map__set_map_flags@LIBBPF_0.1.0 1:0.1.0
+ bpf_map__set_max_entries@LIBBPF_0.1.0 1:0.1.0
+ bpf_map__set_numa_node@LIBBPF_0.1.0 1:0.1.0
  bpf_map__set_pin_path@LIBBPF_0.0.6 5.5
  bpf_map__set_priv@LIBBPF_0.0.1 5.2.6
+ bpf_map__set_type@LIBBPF_0.1.0 1:0.1.0
+ bpf_map__set_value_size@LIBBPF_0.1.0 1:0.1.0
+ bpf_map__type@LIBBPF_0.1.0 1:0.1.0
  bpf_map__unpin@LIBBPF_0.0.1 5.2.6
+ bpf_map__value_size@LIBBPF_0.1.0 1:0.1.0
  bpf_map_delete_batch@LIBBPF_0.0.7 1:0.0.8
  bpf_map_delete_elem@LIBBPF_0.0.1 5.2.6
  bpf_map_freeze@LIBBPF_0.0.3 5.2.6
@@ -135,6 +151,8 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_program__attach_trace@LIBBPF_0.0.6 5.5
  bpf_program__attach_tracepoint@LIBBPF_0.0.4 5.3
  bpf_program__attach_uprobe@LIBBPF_0.0.4 5.3
+ bpf_program__attach_xdp@LIBBPF_0.1.0 1:0.1.0
+ bpf_program__autoload@LIBBPF_0.1.0 1:0.1.0
  bpf_program__bpil_addr_to_offs@LIBBPF_0.0.2 5.2.6
  bpf_program__bpil_offs_to_addr@LIBBPF_0.0.2 5.2.6
  bpf_program__fd@LIBBPF_0.0.1 5.2.6
@@ -148,6 +166,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_program__is_raw_tracepoint@LIBBPF_0.0.1 5.2.6
  bpf_program__is_sched_act@LIBBPF_0.0.1 5.2.6
  bpf_program__is_sched_cls@LIBBPF_0.0.1 5.2.6
+ bpf_program__is_sk_lookup@LIBBPF_0.1.0 1:0.1.0
  bpf_program__is_socket_filter@LIBBPF_0.0.1 5.2.6
  bpf_program__is_struct_ops@LIBBPF_0.0.7 1:0.0.8
  bpf_program__is_tracepoint@LIBBPF_0.0.1 5.2.6
@@ -162,6 +181,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_program__prev@LIBBPF_0.0.1 5.2.6
  bpf_program__priv@LIBBPF_0.0.1 5.2.6
  bpf_program__set_attach_target@LIBBPF_0.0.8 1:0.0.8
+ bpf_program__set_autoload@LIBBPF_0.1.0 1:0.1.0
  bpf_program__set_expected_attach_type@LIBBPF_0.0.1 5.2.6
  bpf_program__set_extension@LIBBPF_0.0.7 1:0.0.8
  bpf_program__set_ifindex@LIBBPF_0.0.1 5.2.6
@@ -173,6 +193,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_program__set_raw_tracepoint@LIBBPF_0.0.1 5.2.6
  bpf_program__set_sched_act@LIBBPF_0.0.1 5.2.6
  bpf_program__set_sched_cls@LIBBPF_0.0.1 5.2.6
+ bpf_program__set_sk_lookup@LIBBPF_0.1.0 1:0.1.0
  bpf_program__set_socket_filter@LIBBPF_0.0.1 5.2.6
  bpf_program__set_struct_ops@LIBBPF_0.0.7 1:0.0.8
  bpf_program__set_tracepoint@LIBBPF_0.0.1 5.2.6
@@ -203,9 +224,14 @@ libbpf.so.0 libbpf0 #MINVER#
  btf__load@LIBBPF_0.0.2 5.2.6
  btf__name_by_offset@LIBBPF_0.0.1 5.2.6
  btf__new@LIBBPF_0.0.1 5.2.6
+ btf__parse@LIBBPF_0.1.0 1:0.1.0
  btf__parse_elf@LIBBPF_0.0.4 5.3
+ btf__parse_raw@LIBBPF_0.1.0 1:0.1.0
+ btf__pointer_size@LIBBPF_0.1.0 1:0.1.0
  btf__resolve_size@LIBBPF_0.0.1 5.2.6
  btf__resolve_type@LIBBPF_0.0.1 5.2.6
+ btf__set_fd@LIBBPF_0.1.0 1:0.1.0
+ btf__set_pointer_size@LIBBPF_0.1.0 1:0.1.0
  btf__type_by_id@LIBBPF_0.0.1 5.2.6
  btf_dump__dump_type@LIBBPF_0.0.4 5.3
  btf_dump__emit_type_decl@LIBBPF_0.0.7 1:0.0.8
