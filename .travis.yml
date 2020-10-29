@@ -35,8 +35,23 @@ stages:
 
 jobs:
     include:
-        - stage: Build & Test
-          name: Debian Build
+        - stage: Builds & Tests
+          name: Kernel LATEST + selftests
+          language: bash
+          env: KERNEL=LATEST
+          script:  $CI_ROOT/vmtest/run_vmtest.sh || travis_terminate 1
+
+        - name: Kernel 4.9.0 + selftests
+          language: bash
+          env: KERNEL=4.9.0
+          script:  $CI_ROOT/vmtest/run_vmtest.sh || travis_terminate 1
+
+        - name: Kernel 5.5.0 + selftests
+          language: bash
+          env: KERNEL=5.5.0
+          script:  $CI_ROOT/vmtest/run_vmtest.sh || travis_terminate 1
+
+        - name: Debian Build
           language: bash
           install:        $CI_ROOT/managers/debian.sh SETUP
           script:         $CI_ROOT/managers/debian.sh RUN || travis_terminate 1
@@ -91,16 +106,6 @@ jobs:
           language: bash
           script: sudo $CI_ROOT/managers/ubuntu.sh || travis_terminate 1
 
-        - name: Kernel 5.5.0 + selftests
-          language: bash
-          env: KERNEL=5.5.0
-          script:  $CI_ROOT/vmtest/run_vmtest.sh || travis_terminate 1
-
-        - name: Kernel LATEST + selftests
-          language: bash
-          env: KERNEL=LATEST
-          script:  $CI_ROOT/vmtest/run_vmtest.sh || travis_terminate 1
-
         - stage: Coverity
           language: bash
           env:
@@ -121,3 +126,5 @@ jobs:
               - sudo apt-get install -y libelf-dev pkg-config
           script:
               - scripts/coverity.sh || travis_terminate 1
+    allow_failures:
+        - env: KERNEL=x.x.x
