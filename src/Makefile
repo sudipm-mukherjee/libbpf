@@ -21,7 +21,7 @@ CFLAGS ?= -g -O2 -Werror -Wall
 ALL_CFLAGS += $(CFLAGS) -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
 ALL_LDFLAGS += $(LDFLAGS)
 ifdef NO_PKG_CONFIG
-	ALL_LDFLAGS += -lelf
+	ALL_LDFLAGS += -lelf -lz
 else
 	PKG_CONFIG ?= pkg-config
 	ALL_CFLAGS += $(shell $(PKG_CONFIG) --cflags libelf)
@@ -47,7 +47,7 @@ endif
 
 HEADERS := bpf.h libbpf.h btf.h xsk.h libbpf_util.h \
 	   bpf_helpers.h bpf_helper_defs.h bpf_tracing.h \
-	   bpf_endian.h bpf_core_read.h
+	   bpf_endian.h bpf_core_read.h libbpf_common.h
 UAPI_HEADERS := $(addprefix $(TOPDIR)/include/uapi/linux/,\
 			    bpf.h bpf_common.h btf.h)
 
@@ -67,6 +67,8 @@ PREFIX ?= /usr
 LIBDIR ?= $(PREFIX)/$(LIBSUBDIR)
 INCLUDEDIR ?= $(PREFIX)/include
 UAPIDIR ?= $(PREFIX)/include
+
+TAGS_PROG := $(if $(shell which etags 2>/dev/null),etags,ctags)
 
 all: $(STATIC_LIBS) $(SHARED_LIBS) $(PC_FILE)
 
@@ -133,3 +135,12 @@ install_pkgconfig: $(PC_FILE)
 
 clean:
 	rm -rf *.o *.a *.so *.so.* *.pc $(SHARED_OBJDIR) $(STATIC_OBJDIR)
+
+.PHONY: cscope tags
+cscope:
+	ls *.c *.h > cscope.files
+	cscope -b -q -f cscope.out
+
+tags:
+	rm -f TAGS tags
+	ls *.c *.h | xargs $(TAGS_PROG) -a
