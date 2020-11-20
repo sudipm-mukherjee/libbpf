@@ -1,3 +1,9 @@
+libbpf (0.2-1~bpo10+1) buster-backports; urgency=medium
+
+  * Rebuild for buster-backports. (Closes: #974975)
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Fri, 20 Nov 2020 12:10:44 +0000
+
 libbpf (0.2-1) unstable; urgency=medium
 
   * New upstream version 0.2
