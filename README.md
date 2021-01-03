@@ -1,17 +1,11 @@
-This is a mirror of [bpf-next Linux source
-tree](https://kernel.googlesource.com/pub/scm/linux/kernel/git/bpf/bpf-next)'s
-`tools/lib/bpf` directory plus its supporting header files.
+BPF/libbpf usage and questions
+==============================
 
-All the gory details of syncing can be found in `scripts/sync-kernel.sh`
-script.
-
-Some header files in this repo (`include/linux/*.h`) are reduced versions of
-their counterpart files at
-[bpf-next](https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/)'s
-`tools/include/linux/*.h` to make compilation successful.
-
-BPF questions
-=============
+Please check out [libbpf-bootstrap](https://github.com/libbpf/libbpf-bootstrap)
+and [the companion blog post](https://nakryiko.com/posts/libbpf-bootstrap/) for
+the examples of building BPF applications with libbpf.
+[libbpf-tools](https://github.com/iovisor/bcc/tree/master/libbpf-tools) are also
+a good source of the real-world libbpf-based tracing tools.
 
 All general BPF questions, including kernel functionality, libbpf APIs and
 their application, should be sent to bpf@vger.kernel.org mailing list. You can
@@ -67,7 +61,7 @@ Distributions
 Distributions packaging libbpf from this mirror:
   - [Fedora](https://src.fedoraproject.org/rpms/libbpf)
   - [Gentoo](https://packages.gentoo.org/packages/dev-libs/libbpf)
-  - [Debian](https://packages.debian.org/sid/libbpf-dev)
+  - [Debian](https://packages.debian.org/source/sid/libbpf)
   - [Arch](https://www.archlinux.org/packages/extra/x86_64/libbpf/)
   - [Ubuntu](https://packages.ubuntu.com/source/groovy/libbpf)
 
@@ -124,6 +118,7 @@ distributions have Clang/LLVM 10+ packaged by default:
   - Ubuntu 20.04+
   - Arch Linux
   - Ubuntu 20.10 (LLVM 11)
+  - Debian 11 (LLVM 11)
 
 Otherwise, please make sure to update it on your system.
 
@@ -135,6 +130,20 @@ use it:
   contain lots of real-world tools converted from BCC to BPF CO-RE. Consider
   converting some more to both contribute to the BPF community and gain some
   more experience with it.
+  
+Details
+=======
+This is a mirror of [bpf-next Linux source
+tree](https://kernel.googlesource.com/pub/scm/linux/kernel/git/bpf/bpf-next)'s
+`tools/lib/bpf` directory plus its supporting header files.
+
+All the gory details of syncing can be found in `scripts/sync-kernel.sh`
+script.
+
+Some header files in this repo (`include/linux/*.h`) are reduced versions of
+their counterpart files at
+[bpf-next](https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/)'s
+`tools/include/linux/*.h` to make compilation successful.
 
 License
 =======
