@@ -11,7 +11,7 @@ Package: libbpf-dev
 Section: libdevel
 Architecture: linux-any
 Multi-Arch: same
-Depends: ${misc:Depends}, libbpf0 (= ${binary:Version})
+Depends: ${misc:Depends}, libbpf0 (= ${binary:Version}), libelf-dev, zlib1g-dev,
 Description: eBPF helper library (development files)
  libbpf is a library for loading eBPF programs and reading and
  manipulating eBPF objects from user-space.
