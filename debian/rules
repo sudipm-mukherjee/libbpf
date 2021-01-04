@@ -15,7 +15,7 @@ override_dh_makeshlibs:
 	dh_makeshlibs -- -v1:$(DEB_VERSION)
 
 override_dh_auto_build:
-	dh_auto_build -- LIBSUBDIR=lib/$(DEB_HOST_MULTIARCH) NO_PKG_CONFIG=1
+	dh_auto_build -- LIBSUBDIR=lib/$(DEB_HOST_MULTIARCH)
 
 override_dh_auto_install:
-	dh_auto_install -- LIBSUBDIR=lib/$(DEB_HOST_MULTIARCH) NO_PKG_CONFIG=1
+	dh_auto_install -- LIBSUBDIR=lib/$(DEB_HOST_MULTIARCH)
