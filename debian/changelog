@@ -1,3 +1,13 @@
+libbpf (0.3-2) unstable; urgency=medium
+
+  [ Luca Boccassi ]
+  * Add build-dependency on zlib1g-dev
+  * Use pkg-config to get build flags
+  * Enable verbose builds unless 'terse' DEB_BUILD_OPTIONS is set
+  * Have libbpf-dev depend on libelf-dev and zlib1g-dev
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Sun, 10 Jan 2021 17:43:30 +0000
+
 libbpf (0.3-1) unstable; urgency=medium
 
   * New upstream version 0.3 (Closes: #979166)
