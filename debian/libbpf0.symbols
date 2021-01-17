@@ -10,6 +10,7 @@ libbpf.so.0 libbpf0 #MINVER#
  LIBBPF_0.0.9@LIBBPF_0.0.9 1:0.0.9
  LIBBPF_0.1.0@LIBBPF_0.1.0 1:0.1.0
  LIBBPF_0.2.0@LIBBPF_0.2.0 1:0.2
+ LIBBPF_0.3.0@LIBBPF_0.3.0 1:0.3
  bpf_btf_get_fd_by_id@LIBBPF_0.0.1 5.2.6
  bpf_btf_get_next_id@LIBBPF_0.0.5 5.4
  bpf_create_map@LIBBPF_0.0.1 5.2.6
@@ -236,6 +237,7 @@ libbpf.so.0 libbpf0 #MINVER#
  btf__add_var@LIBBPF_0.2.0 1:0.2
  btf__add_volatile@LIBBPF_0.2.0 1:0.2
  btf__align_of@LIBBPF_0.0.7 1:0.0.8
+ btf__base_btf@LIBBPF_0.3.0 1:0.3
  btf__dedup@LIBBPF_0.0.2 5.2.6
  btf__endianness@LIBBPF_0.2.0 1:0.2
  btf__fd@LIBBPF_0.0.1 5.2.6
@@ -252,9 +254,13 @@ libbpf.so.0 libbpf0 #MINVER#
  btf__name_by_offset@LIBBPF_0.0.1 5.2.6
  btf__new@LIBBPF_0.0.1 5.2.6
  btf__new_empty@LIBBPF_0.2.0 1:0.2
+ btf__new_empty_split@LIBBPF_0.3.0 1:0.3
  btf__parse@LIBBPF_0.1.0 1:0.1.0
  btf__parse_elf@LIBBPF_0.0.4 5.3
+ btf__parse_elf_split@LIBBPF_0.3.0 1:0.3
  btf__parse_raw@LIBBPF_0.1.0 1:0.1.0
+ btf__parse_raw_split@LIBBPF_0.3.0 1:0.3
+ btf__parse_split@LIBBPF_0.3.0 1:0.3
  btf__pointer_size@LIBBPF_0.1.0 1:0.1.0
  btf__resolve_size@LIBBPF_0.0.1 5.2.6
  btf__resolve_type@LIBBPF_0.0.1 5.2.6
@@ -293,13 +299,16 @@ libbpf.so.0 libbpf0 #MINVER#
  perf_buffer__poll@LIBBPF_0.0.4 5.3
  ring_buffer__add@LIBBPF_0.0.9 1:0.0.9
  ring_buffer__consume@LIBBPF_0.0.9 1:0.0.9
+ ring_buffer__epoll_fd@LIBBPF_0.3.0 1:0.3
  ring_buffer__free@LIBBPF_0.0.9 1:0.0.9
  ring_buffer__new@LIBBPF_0.0.9 1:0.0.9
  ring_buffer__poll@LIBBPF_0.0.9 1:0.0.9
+ xsk_setup_xdp_prog@LIBBPF_0.3.0 1:0.3
  xsk_socket__create@LIBBPF_0.0.2 5.2.6
  xsk_socket__create_shared@LIBBPF_0.2.0 1:0.2
  xsk_socket__delete@LIBBPF_0.0.2 5.2.6
  xsk_socket__fd@LIBBPF_0.0.2 5.2.6
+ xsk_socket__update_xskmap@LIBBPF_0.3.0 1:0.3
  xsk_umem__create@LIBBPF_0.0.2 5.2.6
  xsk_umem__create@LIBBPF_0.0.4 5.4
  xsk_umem__delete@LIBBPF_0.0.2 5.2.6
