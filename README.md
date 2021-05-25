@@ -64,6 +64,7 @@ Distributions packaging libbpf from this mirror:
   - [Debian](https://packages.debian.org/source/sid/libbpf)
   - [Arch](https://www.archlinux.org/packages/extra/x86_64/libbpf/)
   - [Ubuntu](https://packages.ubuntu.com/source/groovy/libbpf)
+  - [Alpine](https://pkgs.alpinelinux.org/packages?name=libbpf)
 
 Benefits of packaging from the mirror over packaging from kernel sources:
   - Consistent versioning across distributions.
@@ -98,6 +99,7 @@ Some major Linux distributions come with kernel BTF already built in:
   - OpenSUSE Tumbleweed (in the next release, as of 2020-06-04)
   - Arch Linux (from kernel 5.7.1.arch1-1)
   - Ubuntu 20.10
+  - Debian 11 (amd64/arm64)
 
 If your kernel doesn't come with BTF built-in, you'll need to build custom
 kernel. You'll need:
@@ -119,13 +121,14 @@ distributions have Clang/LLVM 10+ packaged by default:
   - Arch Linux
   - Ubuntu 20.10 (LLVM 11)
   - Debian 11 (LLVM 11)
+  - Alpine 3.13+
 
 Otherwise, please make sure to update it on your system.
 
 The following resources are useful to understand what BPF CO-RE is and how to
 use it:
-- [BPF Portability and CO-RE](https://facebookmicrosites.github.io/bpf/blog/2020/02/19/bpf-portability-and-co-re.html)
-- [HOWTO: BCC to libbpf conversion](https://facebookmicrosites.github.io/bpf/blog/2020/02/20/bcc-to-libbpf-howto-guide.html)
+- [BPF Portability and CO-RE](https://nakryiko.com/posts/bpf-portability-and-co-re/)
+- [HOWTO: BCC to libbpf conversion](https://nakryiko.com/posts/bcc-to-libbpf-howto-guide/)
 - [libbpf-tools in BCC repo](https://github.com/iovisor/bcc/tree/master/libbpf-tools)
   contain lots of real-world tools converted from BCC to BPF CO-RE. Consider
   converting some more to both contribute to the BPF community and gain some
