@@ -11,6 +11,7 @@ libbpf.so.0 libbpf0 #MINVER#
  LIBBPF_0.1.0@LIBBPF_0.1.0 1:0.1.0
  LIBBPF_0.2.0@LIBBPF_0.2.0 1:0.2
  LIBBPF_0.3.0@LIBBPF_0.3.0 1:0.3
+ LIBBPF_0.4.0@LIBBPF_0.4.0 1:0.4.0
  bpf_btf_get_fd_by_id@LIBBPF_0.0.1 5.2.6
  bpf_btf_get_next_id@LIBBPF_0.0.5 5.4
  bpf_create_map@LIBBPF_0.0.1 5.2.6
@@ -37,6 +38,10 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_link_get_fd_by_id@LIBBPF_0.0.9 1:0.0.9
  bpf_link_get_next_id@LIBBPF_0.0.9 1:0.0.9
  bpf_link_update@LIBBPF_0.0.8 1:0.0.8
+ bpf_linker__add_file@LIBBPF_0.4.0 1:0.4.0
+ bpf_linker__finalize@LIBBPF_0.4.0 1:0.4.0
+ bpf_linker__free@LIBBPF_0.4.0 1:0.4.0
+ bpf_linker__new@LIBBPF_0.4.0 1:0.4.0
  bpf_load_btf@LIBBPF_0.0.1 5.2.6
  bpf_load_program@LIBBPF_0.0.1 5.2.6
  bpf_load_program_xattr@LIBBPF_0.0.1 5.2.6
@@ -47,6 +52,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_map__fd@LIBBPF_0.0.1 5.2.6
  bpf_map__get_pin_path@LIBBPF_0.0.6 5.5
  bpf_map__ifindex@LIBBPF_0.1.0 1:0.1.0
+ bpf_map__inner_map@LIBBPF_0.4.0 1:0.4.0
  bpf_map__is_internal@LIBBPF_0.0.3 5.2.6
  bpf_map__is_offload_neutral@LIBBPF_0.0.1 5.2.6
  bpf_map__is_pinned@LIBBPF_0.0.6 5.5
@@ -118,6 +124,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_object__pin_maps@LIBBPF_0.0.1 5.2.6
  bpf_object__pin_programs@LIBBPF_0.0.1 5.2.6
  bpf_object__priv@LIBBPF_0.0.1 5.2.6
+ bpf_object__set_kversion@LIBBPF_0.4.0 1:0.4.0
  bpf_object__set_priv@LIBBPF_0.0.1 5.2.6
  bpf_object__unload@LIBBPF_0.0.1 5.2.6
  bpf_object__unpin_maps@LIBBPF_0.0.1 5.2.6
@@ -215,6 +222,11 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_set_link_xdp_fd@LIBBPF_0.0.1 5.2.6
  bpf_set_link_xdp_fd_opts@LIBBPF_0.0.8 1:0.0.8
  bpf_task_fd_query@LIBBPF_0.0.1 5.2.6
+ bpf_tc_attach@LIBBPF_0.4.0 1:0.4.0
+ bpf_tc_detach@LIBBPF_0.4.0 1:0.4.0
+ bpf_tc_hook_create@LIBBPF_0.4.0 1:0.4.0
+ bpf_tc_hook_destroy@LIBBPF_0.4.0 1:0.4.0
+ bpf_tc_query@LIBBPF_0.4.0 1:0.4.0
  bpf_verify_program@LIBBPF_0.0.1 5.2.6
  btf__add_array@LIBBPF_0.2.0 1:0.2
  btf__add_const@LIBBPF_0.2.0 1:0.2
@@ -223,6 +235,7 @@ libbpf.so.0 libbpf0 #MINVER#
  btf__add_enum@LIBBPF_0.2.0 1:0.2
  btf__add_enum_value@LIBBPF_0.2.0 1:0.2
  btf__add_field@LIBBPF_0.2.0 1:0.2
+ btf__add_float@LIBBPF_0.4.0 1:0.4.0
  btf__add_func@LIBBPF_0.2.0 1:0.2
  btf__add_func_param@LIBBPF_0.2.0 1:0.2
  btf__add_func_proto@LIBBPF_0.2.0 1:0.2
@@ -232,6 +245,7 @@ libbpf.so.0 libbpf0 #MINVER#
  btf__add_restrict@LIBBPF_0.2.0 1:0.2
  btf__add_str@LIBBPF_0.2.0 1:0.2
  btf__add_struct@LIBBPF_0.2.0 1:0.2
+ btf__add_type@LIBBPF_0.4.0 1:0.4.0
  btf__add_typedef@LIBBPF_0.2.0 1:0.2
  btf__add_union@LIBBPF_0.2.0 1:0.2
  btf__add_var@LIBBPF_0.2.0 1:0.2
