@@ -1,3 +1,10 @@
+libbpf (0.4.0-1) experimental; urgency=medium
+
+  * New upstream version 0.4.0
+    - Update symbols.
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Tue, 25 May 2021 22:05:09 +0100
+
 libbpf (0.3-2) unstable; urgency=medium
 
   [ Luca Boccassi ]
