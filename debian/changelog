@@ -1,3 +1,9 @@
+libbpf (0.4.0-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Tue, 17 Aug 2021 22:12:29 +0100
+
 libbpf (0.4.0-1) experimental; urgency=medium
 
   * New upstream version 0.4.0
