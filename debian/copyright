@@ -14,6 +14,10 @@ Copyright: 2013-2015 Alexei Starovoitov <ast@kernel.org>
            2018-2019 Intel Corporation.
 License:   LGPL-2.1 or BSD-2-Clause
 
+Files:     docs/conf.py
+Copyright: Grant Seltzer <grantseltzer@gmail.com>
+License:   GPL-2.0
+
 Files:     include/uapi/linux/bpf.h
            include/uapi/linux/bpf_common.h
            include/uapi/linux/btf.h
@@ -30,6 +34,29 @@ Copyright: 2018 Ben Hutchings <ben@decadent.org.uk>
            2018 Hilko Bengen <bengen@debian.org>
            2018 Luca Boccassi <bluca@debian.org>
            2020 Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+License:   GPL-2+
+
+License:   GPL-2.0
+ This program is free software; you can redistribute it
+ and/or modify it under the terms of the GNU General Public
+ License version 2 as published by the Free Software
+ Foundation.
+ .
+ This program is distributed in the hope that it will be
+ useful, but WITHOUT ANY WARRANTY; without even the implied
+ warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+ PURPOSE.  See the GNU General Public License for more
+ details.
+ .
+ You should have received a copy of the GNU General Public
+ License along with this package; if not, write to the Free
+ Software Foundation, Inc., 51 Franklin St, Fifth Floor,
+ Boston, MA 02110-1301 USA
+ .
+ On Debian systems, the full text of the GNU General Public
+ License version 2 can be found in the file
+ `/usr/share/common-licenses/GPL-2'.
+
 License:   GPL-2+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
