@@ -1,3 +1,11 @@
+libbpf (0.5.0-1~bpo11+1) bullseye-backports; urgency=medium
+
+  * Rebuild for bullseye-backports.
+  * Add dependency on linux-libc-dev.
+    - Thanks Antonio Terceiro for the diff.
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Wed, 01 Dec 2021 09:44:50 +0000
+
 libbpf (0.5.0-1) unstable; urgency=medium
 
   * New upstream version 0.5.0
