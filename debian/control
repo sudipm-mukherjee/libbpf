@@ -21,7 +21,7 @@ Description: eBPF helper library (development files)
 Package: libbpf0
 Architecture: linux-any
 Multi-Arch: same
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, linux-libc-dev (>= 5.14)
 Description: eBPF helper library (shared library)
  libbpf is a library for loading eBPF programs and reading and
  manipulating eBPF objects from user-space.
