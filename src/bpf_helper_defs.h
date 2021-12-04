@@ -27,6 +27,7 @@ struct tcp_sock;
 struct tcp_timewait_sock;
 struct tcp_request_sock;
 struct udp6_sock;
+struct unix_sock;
 struct task_struct;
 struct __sk_buff;
 struct sk_msg_md;
@@ -190,7 +191,7 @@ static __u32 (*bpf_get_prandom_u32)(void) = (void *) 7;
  * bpf_get_smp_processor_id
  *
  * 	Get the SMP (symmetric multiprocessing) processor id. Note that
- * 	all programs run with preemption disabled, which means that the
+ * 	all programs run with migration disabled, which means that the
  * 	SMP processor id is stable during all the execution of the
  * 	program.
  *
@@ -313,7 +314,7 @@ static long (*bpf_l4_csum_replace)(struct __sk_buff *skb, __u32 offset, __u64 fr
  * 	if the maximum number of tail calls has been reached for this
  * 	chain of programs. This limit is defined in the kernel by the
  * 	macro **MAX_TAIL_CALL_CNT** (not accessible to user space),
- * 	which is currently set to 32.
+ * 	which is currently set to 33.
  *
  * Returns
  * 	0 on success, or a negative error in case of failure.
@@ -3012,7 +3013,7 @@ static __u64 (*bpf_ktime_get_boot_ns)(void) = (void *) 125;
  * 	arguments. The *data* are a **u64** array and corresponding format string
  * 	values are stored in the array. For strings and pointers where pointees
  * 	are accessed, only the pointer values are stored in the *data* array.
- * 	The *data_len* is the size of *data* in bytes.
+ * 	The *data_len* is the size of *data* in bytes - must be a multiple of 8.
  *
  * 	Formats **%s**, **%p{i,I}{4,6}** requires to read kernel memory.
  * 	Reading kernel memory may fail due to either invalid address or
@@ -3873,7 +3874,8 @@ static long (*bpf_for_each_map_elem)(void *map, void *callback_fn, void *callbac
  * 	Each format specifier in **fmt** corresponds to one u64 element
  * 	in the **data** array. For strings and pointers where pointees
  * 	are accessed, only the pointer values are stored in the *data*
- * 	array. The *data_len* is the size of *data* in bytes.
+ * 	array. The *data_len* is the size of *data* in bytes - must be
+ * 	a multiple of 8.
  *
  * 	Formats **%s** and **%p{i,I}{4,6}** require to read kernel
  * 	memory. Reading kernel memory may fail due to either invalid
@@ -4042,5 +4044,96 @@ static __u64 (*bpf_get_attach_cookie)(void *ctx) = (void *) 174;
  * 	A pointer to struct pt_regs.
  */
 static long (*bpf_task_pt_regs)(struct task_struct *task) = (void *) 175;
+
+/*
+ * bpf_get_branch_snapshot
+ *
+ * 	Get branch trace from hardware engines like Intel LBR. The
+ * 	hardware engine is stopped shortly after the helper is
+ * 	called. Therefore, the user need to filter branch entries
+ * 	based on the actual use case. To capture branch trace
+ * 	before the trigger point of the BPF program, the helper
+ * 	should be called at the beginning of the BPF program.
+ *
+ * 	The data is stored as struct perf_branch_entry into output
+ * 	buffer *entries*. *size* is the size of *entries* in bytes.
+ * 	*flags* is reserved for now and must be zero.
+ *
+ *
+ * Returns
+ * 	On success, number of bytes written to *buf*. On error, a
+ * 	negative value.
+ *
+ * 	**-EINVAL** if *flags* is not zero.
+ *
+ * 	**-ENOENT** if architecture does not support branch records.
+ */
+static long (*bpf_get_branch_snapshot)(void *entries, __u32 size, __u64 flags) = (void *) 176;
+
+/*
+ * bpf_trace_vprintk
+ *
+ * 	Behaves like **bpf_trace_printk**\ () helper, but takes an array of u64
+ * 	to format and can handle more format args as a result.
+ *
+ * 	Arguments are to be used as in **bpf_seq_printf**\ () helper.
+ *
+ * Returns
+ * 	The number of bytes written to the buffer, or a negative error
+ * 	in case of failure.
+ */
+static long (*bpf_trace_vprintk)(const char *fmt, __u32 fmt_size, const void *data, __u32 data_len) = (void *) 177;
+
+/*
+ * bpf_skc_to_unix_sock
+ *
+ * 	Dynamically cast a *sk* pointer to a *unix_sock* pointer.
+ *
+ * Returns
+ * 	*sk* if casting is valid, or **NULL** otherwise.
+ */
+static struct unix_sock *(*bpf_skc_to_unix_sock)(void *sk) = (void *) 178;
+
+/*
+ * bpf_kallsyms_lookup_name
+ *
+ * 	Get the address of a kernel symbol, returned in *res*. *res* is
+ * 	set to 0 if the symbol is not found.
+ *
+ * Returns
+ * 	On success, zero. On error, a negative value.
+ *
+ * 	**-EINVAL** if *flags* is not zero.
+ *
+ * 	**-EINVAL** if string *name* is not the same size as *name_sz*.
+ *
+ * 	**-ENOENT** if symbol is not found.
+ *
+ * 	**-EPERM** if caller does not have permission to obtain kernel address.
+ */
+static long (*bpf_kallsyms_lookup_name)(const char *name, int name_sz, int flags, __u64 *res) = (void *) 179;
+
+/*
+ * bpf_find_vma
+ *
+ * 	Find vma of *task* that contains *addr*, call *callback_fn*
+ * 	function with *task*, *vma*, and *callback_ctx*.
+ * 	The *callback_fn* should be a static function and
+ * 	the *callback_ctx* should be a pointer to the stack.
+ * 	The *flags* is used to control certain aspects of the helper.
+ * 	Currently, the *flags* must be 0.
+ *
+ * 	The expected callback signature is
+ *
+ * 	long (\*callback_fn)(struct task_struct \*task, struct vm_area_struct \*vma, void \*callback_ctx);
+ *
+ *
+ * Returns
+ * 	0 on success.
+ * 	**-ENOENT** if *task->mm* is NULL, or no vma contains *addr*.
+ * 	**-EBUSY** if failed to try lock mmap_lock.
+ * 	**-EINVAL** for invalid **flags**.
+ */
+static long (*bpf_find_vma)(struct task_struct *task, __u64 addr, void *callback_fn, void *callback_ctx, __u64 flags) = (void *) 180;
 
 

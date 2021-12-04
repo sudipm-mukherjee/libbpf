@@ -17,7 +17,7 @@ BPF_BRANCH=${3-""}
 BASELINE_COMMIT=${BPF_NEXT_BASELINE:-$(cat ${LIBBPF_REPO}/CHECKPOINT-COMMIT)}
 BPF_BASELINE_COMMIT=${BPF_BASELINE:-$(cat ${LIBBPF_REPO}/BPF-CHECKPOINT-COMMIT)}
 
-if [ -z "${LIBBPF_REPO}" ] || [ -z "${LINUX_REPO}" ] || [ -z "${BPF_BRANCH}" ]; then
+if [ -z "${LIBBPF_REPO}" ] || [ -z "${LINUX_REPO}" ]; then
 	echo "Error: libbpf or linux repos are not specified"
 	usage
 fi
@@ -74,7 +74,7 @@ commit_desc()
 }
 
 # Create commit single-line signature, which consists of:
-# - full commit hash
+# - full commit subject
 # - author date in ISO8601 format
 # - full commit body with newlines replaced with vertical bars (|)
 # - shortstat appended at the end
@@ -263,8 +263,11 @@ cd_to ${LIBBPF_REPO}
 git checkout -b ${LIBBPF_SYNC_TAG}
 
 for patch in $(ls -1 ${TMP_DIR}/patches | tail -n +2); do
-	if ! git am --3way --committer-date-is-author-date "${TMP_DIR}/patches/${patch}"; then
-		read -p "Applying ${TMP_DIR}/patches/${patch} failed, please resolve manually and press <return> to proceed..."
+	if ! git am -3 --committer-date-is-author-date "${TMP_DIR}/patches/${patch}"; then
+		if ! git apply -3 "${TMP_DIR}/patches/${patch}"; then
+			read -p "Applying ${TMP_DIR}/patches/${patch} failed, please resolve manually and press <return> to proceed..."
+		fi
+		git am --continue
 	fi
 done
 
