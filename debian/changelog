@@ -1,3 +1,10 @@
+libbpf (0.7.0-1) experimental; urgency=medium
+
+  * New upstream version 0.7.0
+   - Update symbols.
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Fri, 18 Feb 2022 17:31:20 +0000
+
 libbpf (0.6.1-1) experimental; urgency=medium
 
   * New upstream version 0.6.1
