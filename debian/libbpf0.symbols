@@ -14,8 +14,10 @@ libbpf.so.0 libbpf0 #MINVER#
  LIBBPF_0.4.0@LIBBPF_0.4.0 1:0.4.0
  LIBBPF_0.5.0@LIBBPF_0.5.0 1:0.5.0
  LIBBPF_0.6.0@LIBBPF_0.6.0 1:0.6.0
+ LIBBPF_0.7.0@LIBBPF_0.7.0 1:0.7.0
  bpf_btf_get_fd_by_id@LIBBPF_0.0.1 5.2.6
  bpf_btf_get_next_id@LIBBPF_0.0.5 5.4
+ bpf_btf_load@LIBBPF_0.7.0 1:0.7.0
  bpf_create_map@LIBBPF_0.0.1 5.2.6
  bpf_create_map_in_map@LIBBPF_0.0.1 5.2.6
  bpf_create_map_in_map_node@LIBBPF_0.0.1 5.2.6
@@ -148,6 +150,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_probe_map_type@LIBBPF_0.0.2 5.2.6
  bpf_probe_prog_type@LIBBPF_0.0.2 5.2.6
  bpf_prog_attach@LIBBPF_0.0.1 5.2.6
+ bpf_prog_attach_opts@LIBBPF_0.0.8 1:0.7.0
  bpf_prog_attach_xattr@LIBBPF_0.0.7 1:0.0.8
  bpf_prog_bind_map@LIBBPF_0.2.0 1:0.2
  bpf_prog_detach2@LIBBPF_0.0.1 5.2.6
@@ -186,6 +189,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_program__autoload@LIBBPF_0.1.0 1:0.1.0
  bpf_program__bpil_addr_to_offs@LIBBPF_0.0.2 5.2.6
  bpf_program__bpil_offs_to_addr@LIBBPF_0.0.2 5.2.6
+ bpf_program__expected_attach_type@LIBBPF_0.7.0 1:0.7.0
  bpf_program__fd@LIBBPF_0.0.1 5.2.6
  bpf_program__flags@LIBBPF_0.6.0 1:0.6.0
  bpf_program__get_expected_attach_type@LIBBPF_0.0.6 5.5
@@ -207,6 +211,8 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_program__is_tracing@LIBBPF_0.0.6 5.5
  bpf_program__is_xdp@LIBBPF_0.0.1 5.2.6
  bpf_program__load@LIBBPF_0.0.1 5.2.6
+ bpf_program__log_buf@LIBBPF_0.7.0 1:0.7.0
+ bpf_program__log_level@LIBBPF_0.7.0 1:0.7.0
  bpf_program__name@LIBBPF_0.0.7 1:0.0.8
  bpf_program__next@LIBBPF_0.0.1 5.2.6
  bpf_program__nth_fd@LIBBPF_0.0.1 5.2.6
@@ -222,6 +228,8 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_program__set_flags@LIBBPF_0.6.0 1:0.6.0
  bpf_program__set_ifindex@LIBBPF_0.0.1 5.2.6
  bpf_program__set_kprobe@LIBBPF_0.0.1 5.2.6
+ bpf_program__set_log_buf@LIBBPF_0.7.0 1:0.7.0
+ bpf_program__set_log_level@LIBBPF_0.7.0 1:0.7.0
  bpf_program__set_lsm@LIBBPF_0.0.8 1:0.0.8
  bpf_program__set_perf_event@LIBBPF_0.0.1 5.2.6
  bpf_program__set_prep@LIBBPF_0.0.1 5.2.6
@@ -238,6 +246,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_program__set_xdp@LIBBPF_0.0.1 5.2.6
  bpf_program__size@LIBBPF_0.0.6 5.5
  bpf_program__title@LIBBPF_0.0.1 5.2.6
+ bpf_program__type@LIBBPF_0.7.0 1:0.7.0
  bpf_program__unload@LIBBPF_0.0.1 5.2.6
  bpf_program__unpin@LIBBPF_0.0.1 5.2.6
  bpf_program__unpin_instance@LIBBPF_0.0.1 5.2.6
@@ -251,6 +260,10 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_tc_hook_destroy@LIBBPF_0.4.0 1:0.4.0
  bpf_tc_query@LIBBPF_0.4.0 1:0.4.0
  bpf_verify_program@LIBBPF_0.0.1 5.2.6
+ bpf_xdp_attach@LIBBPF_0.7.0 1:0.7.0
+ bpf_xdp_detach@LIBBPF_0.7.0 1:0.7.0
+ bpf_xdp_query@LIBBPF_0.7.0 1:0.7.0
+ bpf_xdp_query_id@LIBBPF_0.7.0 1:0.7.0
  btf__add_array@LIBBPF_0.2.0 1:0.2
  btf__add_btf@LIBBPF_0.6.0 1:0.6.0
  btf__add_const@LIBBPF_0.2.0 1:0.2
@@ -339,6 +352,9 @@ libbpf.so.0 libbpf0 #MINVER#
  libbpf_major_version@LIBBPF_0.6.0 1:0.6.0
  libbpf_minor_version@LIBBPF_0.6.0 1:0.6.0
  libbpf_num_possible_cpus@LIBBPF_0.0.4 5.3
+ libbpf_probe_bpf_helper@LIBBPF_0.7.0 1:0.7.0
+ libbpf_probe_bpf_map_type@LIBBPF_0.7.0 1:0.7.0
+ libbpf_probe_bpf_prog_type@LIBBPF_0.7.0 1:0.7.0
  libbpf_prog_type_by_name@LIBBPF_0.0.1 5.2.6
  libbpf_set_print@LIBBPF_0.0.1 5.2.6
  libbpf_set_strict_mode@LIBBPF_0.5.0 1:0.5.0
