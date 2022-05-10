@@ -27,6 +27,7 @@ struct tcp_sock;
 struct tcp_timewait_sock;
 struct tcp_request_sock;
 struct udp6_sock;
+struct unix_sock;
 struct task_struct;
 struct __sk_buff;
 struct sk_msg_md;
@@ -190,7 +191,7 @@ static __u32 (*bpf_get_prandom_u32)(void) = (void *) 7;
  * bpf_get_smp_processor_id
  *
  * 	Get the SMP (symmetric multiprocessing) processor id. Note that
- * 	all programs run with preemption disabled, which means that the
+ * 	all programs run with migration disabled, which means that the
  * 	SMP processor id is stable during all the execution of the
  * 	program.
  *
@@ -313,7 +314,7 @@ static long (*bpf_l4_csum_replace)(struct __sk_buff *skb, __u32 offset, __u64 fr
  * 	if the maximum number of tail calls has been reached for this
  * 	chain of programs. This limit is defined in the kernel by the
  * 	macro **MAX_TAIL_CALL_CNT** (not accessible to user space),
- * 	which is currently set to 32.
+ * 	which is currently set to 33.
  *
  * Returns
  * 	0 on success, or a negative error in case of failure.
@@ -351,6 +352,7 @@ static long (*bpf_clone_redirect)(struct __sk_buff *skb, __u32 ifindex, __u64 fl
 /*
  * bpf_get_current_pid_tgid
  *
+ * 	Get the current pid and tgid.
  *
  * Returns
  * 	A 64-bit integer containing the current tgid and pid, and
@@ -363,6 +365,7 @@ static __u64 (*bpf_get_current_pid_tgid)(void) = (void *) 14;
 /*
  * bpf_get_current_uid_gid
  *
+ * 	Get the current uid and gid.
  *
  * Returns
  * 	A 64-bit integer containing the current GID and UID, and
@@ -918,6 +921,7 @@ static __u32 (*bpf_get_hash_recalc)(struct __sk_buff *skb) = (void *) 34;
 /*
  * bpf_get_current_task
  *
+ * 	Get the current task.
  *
  * Returns
  * 	A pointer to the current task struct.
@@ -1056,6 +1060,8 @@ static __s64 (*bpf_csum_update)(struct __sk_buff *skb, __wsum csum) = (void *) 4
  * 	recalculation the next time the kernel tries to access this
  * 	hash or when the **bpf_get_hash_recalc**\ () helper is called.
  *
+ * Returns
+ * 	void.
  */
 static void (*bpf_set_hash_invalid)(struct __sk_buff *skb) = (void *) 41;
 
@@ -1155,6 +1161,7 @@ static __u64 (*bpf_get_socket_cookie)(void *ctx) = (void *) 46;
 /*
  * bpf_get_socket_uid
  *
+ * 	Get the owner UID of the socked associated to *skb*.
  *
  * Returns
  * 	The owner UID of the socket associated to *skb*. If the socket
@@ -2062,6 +2069,8 @@ static __u64 (*bpf_skb_cgroup_id)(struct __sk_buff *skb) = (void *) 79;
 /*
  * bpf_get_current_cgroup_id
  *
+ * 	Get the current cgroup id based on the cgroup within which
+ * 	the current task is running.
  *
  * Returns
  * 	A 64-bit integer containing the current cgroup id based
@@ -3012,7 +3021,7 @@ static __u64 (*bpf_ktime_get_boot_ns)(void) = (void *) 125;
  * 	arguments. The *data* are a **u64** array and corresponding format string
  * 	values are stored in the array. For strings and pointers where pointees
  * 	are accessed, only the pointer values are stored in the *data* array.
- * 	The *data_len* is the size of *data* in bytes.
+ * 	The *data_len* is the size of *data* in bytes - must be a multiple of 8.
  *
  * 	Formats **%s**, **%p{i,I}{4,6}** requires to read kernel memory.
  * 	Reading kernel memory may fail due to either invalid address or
@@ -3873,7 +3882,8 @@ static long (*bpf_for_each_map_elem)(void *map, void *callback_fn, void *callbac
  * 	Each format specifier in **fmt** corresponds to one u64 element
  * 	in the **data** array. For strings and pointers where pointees
  * 	are accessed, only the pointer values are stored in the *data*
- * 	array. The *data_len* is the size of *data* in bytes.
+ * 	array. The *data_len* is the size of *data* in bytes - must be
+ * 	a multiple of 8.
  *
  * 	Formats **%s** and **%p{i,I}{4,6}** require to read kernel
  * 	memory. Reading kernel memory may fail due to either invalid
@@ -4042,5 +4052,247 @@ static __u64 (*bpf_get_attach_cookie)(void *ctx) = (void *) 174;
  * 	A pointer to struct pt_regs.
  */
 static long (*bpf_task_pt_regs)(struct task_struct *task) = (void *) 175;
+
+/*
+ * bpf_get_branch_snapshot
+ *
+ * 	Get branch trace from hardware engines like Intel LBR. The
+ * 	hardware engine is stopped shortly after the helper is
+ * 	called. Therefore, the user need to filter branch entries
+ * 	based on the actual use case. To capture branch trace
+ * 	before the trigger point of the BPF program, the helper
+ * 	should be called at the beginning of the BPF program.
+ *
+ * 	The data is stored as struct perf_branch_entry into output
+ * 	buffer *entries*. *size* is the size of *entries* in bytes.
+ * 	*flags* is reserved for now and must be zero.
+ *
+ *
+ * Returns
+ * 	On success, number of bytes written to *buf*. On error, a
+ * 	negative value.
+ *
+ * 	**-EINVAL** if *flags* is not zero.
+ *
+ * 	**-ENOENT** if architecture does not support branch records.
+ */
+static long (*bpf_get_branch_snapshot)(void *entries, __u32 size, __u64 flags) = (void *) 176;
+
+/*
+ * bpf_trace_vprintk
+ *
+ * 	Behaves like **bpf_trace_printk**\ () helper, but takes an array of u64
+ * 	to format and can handle more format args as a result.
+ *
+ * 	Arguments are to be used as in **bpf_seq_printf**\ () helper.
+ *
+ * Returns
+ * 	The number of bytes written to the buffer, or a negative error
+ * 	in case of failure.
+ */
+static long (*bpf_trace_vprintk)(const char *fmt, __u32 fmt_size, const void *data, __u32 data_len) = (void *) 177;
+
+/*
+ * bpf_skc_to_unix_sock
+ *
+ * 	Dynamically cast a *sk* pointer to a *unix_sock* pointer.
+ *
+ * Returns
+ * 	*sk* if casting is valid, or **NULL** otherwise.
+ */
+static struct unix_sock *(*bpf_skc_to_unix_sock)(void *sk) = (void *) 178;
+
+/*
+ * bpf_kallsyms_lookup_name
+ *
+ * 	Get the address of a kernel symbol, returned in *res*. *res* is
+ * 	set to 0 if the symbol is not found.
+ *
+ * Returns
+ * 	On success, zero. On error, a negative value.
+ *
+ * 	**-EINVAL** if *flags* is not zero.
+ *
+ * 	**-EINVAL** if string *name* is not the same size as *name_sz*.
+ *
+ * 	**-ENOENT** if symbol is not found.
+ *
+ * 	**-EPERM** if caller does not have permission to obtain kernel address.
+ */
+static long (*bpf_kallsyms_lookup_name)(const char *name, int name_sz, int flags, __u64 *res) = (void *) 179;
+
+/*
+ * bpf_find_vma
+ *
+ * 	Find vma of *task* that contains *addr*, call *callback_fn*
+ * 	function with *task*, *vma*, and *callback_ctx*.
+ * 	The *callback_fn* should be a static function and
+ * 	the *callback_ctx* should be a pointer to the stack.
+ * 	The *flags* is used to control certain aspects of the helper.
+ * 	Currently, the *flags* must be 0.
+ *
+ * 	The expected callback signature is
+ *
+ * 	long (\*callback_fn)(struct task_struct \*task, struct vm_area_struct \*vma, void \*callback_ctx);
+ *
+ *
+ * Returns
+ * 	0 on success.
+ * 	**-ENOENT** if *task->mm* is NULL, or no vma contains *addr*.
+ * 	**-EBUSY** if failed to try lock mmap_lock.
+ * 	**-EINVAL** for invalid **flags**.
+ */
+static long (*bpf_find_vma)(struct task_struct *task, __u64 addr, void *callback_fn, void *callback_ctx, __u64 flags) = (void *) 180;
+
+/*
+ * bpf_loop
+ *
+ * 	For **nr_loops**, call **callback_fn** function
+ * 	with **callback_ctx** as the context parameter.
+ * 	The **callback_fn** should be a static function and
+ * 	the **callback_ctx** should be a pointer to the stack.
+ * 	The **flags** is used to control certain aspects of the helper.
+ * 	Currently, the **flags** must be 0. Currently, nr_loops is
+ * 	limited to 1 << 23 (~8 million) loops.
+ *
+ * 	long (\*callback_fn)(u32 index, void \*ctx);
+ *
+ * 	where **index** is the current index in the loop. The index
+ * 	is zero-indexed.
+ *
+ * 	If **callback_fn** returns 0, the helper will continue to the next
+ * 	loop. If return value is 1, the helper will skip the rest of
+ * 	the loops and return. Other return values are not used now,
+ * 	and will be rejected by the verifier.
+ *
+ *
+ * Returns
+ * 	The number of loops performed, **-EINVAL** for invalid **flags**,
+ * 	**-E2BIG** if **nr_loops** exceeds the maximum number of loops.
+ */
+static long (*bpf_loop)(__u32 nr_loops, void *callback_fn, void *callback_ctx, __u64 flags) = (void *) 181;
+
+/*
+ * bpf_strncmp
+ *
+ * 	Do strncmp() between **s1** and **s2**. **s1** doesn't need
+ * 	to be null-terminated and **s1_sz** is the maximum storage
+ * 	size of **s1**. **s2** must be a read-only string.
+ *
+ * Returns
+ * 	An integer less than, equal to, or greater than zero
+ * 	if the first **s1_sz** bytes of **s1** is found to be
+ * 	less than, to match, or be greater than **s2**.
+ */
+static long (*bpf_strncmp)(const char *s1, __u32 s1_sz, const char *s2) = (void *) 182;
+
+/*
+ * bpf_get_func_arg
+ *
+ * 	Get **n**-th argument (zero based) of the traced function (for tracing programs)
+ * 	returned in **value**.
+ *
+ *
+ * Returns
+ * 	0 on success.
+ * 	**-EINVAL** if n >= arguments count of traced function.
+ */
+static long (*bpf_get_func_arg)(void *ctx, __u32 n, __u64 *value) = (void *) 183;
+
+/*
+ * bpf_get_func_ret
+ *
+ * 	Get return value of the traced function (for tracing programs)
+ * 	in **value**.
+ *
+ *
+ * Returns
+ * 	0 on success.
+ * 	**-EOPNOTSUPP** for tracing programs other than BPF_TRACE_FEXIT or BPF_MODIFY_RETURN.
+ */
+static long (*bpf_get_func_ret)(void *ctx, __u64 *value) = (void *) 184;
+
+/*
+ * bpf_get_func_arg_cnt
+ *
+ * 	Get number of arguments of the traced function (for tracing programs).
+ *
+ *
+ * Returns
+ * 	The number of arguments of the traced function.
+ */
+static long (*bpf_get_func_arg_cnt)(void *ctx) = (void *) 185;
+
+/*
+ * bpf_get_retval
+ *
+ * 	Get the syscall's return value that will be returned to userspace.
+ *
+ * 	This helper is currently supported by cgroup programs only.
+ *
+ * Returns
+ * 	The syscall's return value.
+ */
+static int (*bpf_get_retval)(void) = (void *) 186;
+
+/*
+ * bpf_set_retval
+ *
+ * 	Set the syscall's return value that will be returned to userspace.
+ *
+ * 	This helper is currently supported by cgroup programs only.
+ *
+ * Returns
+ * 	0 on success, or a negative error in case of failure.
+ */
+static int (*bpf_set_retval)(int retval) = (void *) 187;
+
+/*
+ * bpf_xdp_get_buff_len
+ *
+ * 	Get the total size of a given xdp buff (linear and paged area)
+ *
+ * Returns
+ * 	The total size of a given xdp buffer.
+ */
+static __u64 (*bpf_xdp_get_buff_len)(struct xdp_md *xdp_md) = (void *) 188;
+
+/*
+ * bpf_xdp_load_bytes
+ *
+ * 	This helper is provided as an easy way to load data from a
+ * 	xdp buffer. It can be used to load *len* bytes from *offset* from
+ * 	the frame associated to *xdp_md*, into the buffer pointed by
+ * 	*buf*.
+ *
+ * Returns
+ * 	0 on success, or a negative error in case of failure.
+ */
+static long (*bpf_xdp_load_bytes)(struct xdp_md *xdp_md, __u32 offset, void *buf, __u32 len) = (void *) 189;
+
+/*
+ * bpf_xdp_store_bytes
+ *
+ * 	Store *len* bytes from buffer *buf* into the frame
+ * 	associated to *xdp_md*, at *offset*.
+ *
+ * Returns
+ * 	0 on success, or a negative error in case of failure.
+ */
+static long (*bpf_xdp_store_bytes)(struct xdp_md *xdp_md, __u32 offset, void *buf, __u32 len) = (void *) 190;
+
+/*
+ * bpf_copy_from_user_task
+ *
+ * 	Read *size* bytes from user space address *user_ptr* in *tsk*'s
+ * 	address space, and stores the data in *dst*. *flags* is not
+ * 	used yet and is provided for future extensibility. This helper
+ * 	can only be used by sleepable programs.
+ *
+ * Returns
+ * 	0 on success, or a negative error in case of failure. On error
+ * 	*dst* buffer is zeroed out.
+ */
+static long (*bpf_copy_from_user_task)(void *dst, __u32 size, const void *user_ptr, struct task_struct *tsk, __u64 flags) = (void *) 191;
 
 

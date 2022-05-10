@@ -13,8 +13,11 @@ libbpf.so.0 libbpf0 #MINVER#
  LIBBPF_0.3.0@LIBBPF_0.3.0 1:0.3
  LIBBPF_0.4.0@LIBBPF_0.4.0 1:0.4.0
  LIBBPF_0.5.0@LIBBPF_0.5.0 1:0.5.0
+ LIBBPF_0.6.0@LIBBPF_0.6.0 1:0.6.0
+ LIBBPF_0.7.0@LIBBPF_0.7.0 1:0.7.0
  bpf_btf_get_fd_by_id@LIBBPF_0.0.1 5.2.6
  bpf_btf_get_next_id@LIBBPF_0.0.5 5.4
+ bpf_btf_load@LIBBPF_0.7.0 1:0.7.0
  bpf_create_map@LIBBPF_0.0.1 5.2.6
  bpf_create_map_in_map@LIBBPF_0.0.1 5.2.6
  bpf_create_map_in_map_node@LIBBPF_0.0.1 5.2.6
@@ -59,6 +62,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_map__is_offload_neutral@LIBBPF_0.0.1 5.2.6
  bpf_map__is_pinned@LIBBPF_0.0.6 5.5
  bpf_map__key_size@LIBBPF_0.1.0 1:0.1.0
+ bpf_map__map_extra@LIBBPF_0.6.0 1:0.6.0
  bpf_map__map_flags@LIBBPF_0.1.0 1:0.1.0
  bpf_map__max_entries@LIBBPF_0.1.0 1:0.1.0
  bpf_map__name@LIBBPF_0.0.1 5.2.6
@@ -74,6 +78,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_map__set_initial_value@LIBBPF_0.0.8 1:0.0.8
  bpf_map__set_inner_map_fd@LIBBPF_0.0.1 5.2.6
  bpf_map__set_key_size@LIBBPF_0.1.0 1:0.1.0
+ bpf_map__set_map_extra@LIBBPF_0.6.0 1:0.6.0
  bpf_map__set_map_flags@LIBBPF_0.1.0 1:0.1.0
  bpf_map__set_max_entries@LIBBPF_0.1.0 1:0.1.0
  bpf_map__set_numa_node@LIBBPF_0.1.0 1:0.1.0
@@ -84,6 +89,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_map__type@LIBBPF_0.1.0 1:0.1.0
  bpf_map__unpin@LIBBPF_0.0.1 5.2.6
  bpf_map__value_size@LIBBPF_0.1.0 1:0.1.0
+ bpf_map_create@LIBBPF_0.6.0 1:0.6.0
  bpf_map_delete_batch@LIBBPF_0.0.7 1:0.0.8
  bpf_map_delete_elem@LIBBPF_0.0.1 5.2.6
  bpf_map_freeze@LIBBPF_0.0.3 5.2.6
@@ -119,6 +125,8 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_object__load_xattr@LIBBPF_0.0.4 5.3
  bpf_object__name@LIBBPF_0.0.1 5.2.6
  bpf_object__next@LIBBPF_0.0.1 5.2.6
+ bpf_object__next_map@LIBBPF_0.6.0 1:0.6.0
+ bpf_object__next_program@LIBBPF_0.6.0 1:0.6.0
  bpf_object__open@LIBBPF_0.0.1 5.2.6
  bpf_object__open_buffer@LIBBPF_0.0.1 5.2.6
  bpf_object__open_file@LIBBPF_0.0.6 5.5
@@ -128,6 +136,8 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_object__pin@LIBBPF_0.0.1 5.2.6
  bpf_object__pin_maps@LIBBPF_0.0.1 5.2.6
  bpf_object__pin_programs@LIBBPF_0.0.1 5.2.6
+ bpf_object__prev_map@LIBBPF_0.6.0 1:0.6.0
+ bpf_object__prev_program@LIBBPF_0.6.0 1:0.6.0
  bpf_object__priv@LIBBPF_0.0.1 5.2.6
  bpf_object__set_kversion@LIBBPF_0.4.0 1:0.4.0
  bpf_object__set_priv@LIBBPF_0.0.1 5.2.6
@@ -140,6 +150,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_probe_map_type@LIBBPF_0.0.2 5.2.6
  bpf_probe_prog_type@LIBBPF_0.0.2 5.2.6
  bpf_prog_attach@LIBBPF_0.0.1 5.2.6
+ bpf_prog_attach_opts@LIBBPF_0.0.8 1:0.7.0
  bpf_prog_attach_xattr@LIBBPF_0.0.7 1:0.0.8
  bpf_prog_bind_map@LIBBPF_0.2.0 1:0.2
  bpf_prog_detach2@LIBBPF_0.0.1 5.2.6
@@ -151,6 +162,8 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_prog_linfo__lfind_addr_func@LIBBPF_0.0.1 5.2.6
  bpf_prog_linfo__new@LIBBPF_0.0.1 5.2.6
  bpf_prog_load@LIBBPF_0.0.1 5.2.6
+ bpf_prog_load@LIBBPF_0.6.0 1:0.6.0
+ bpf_prog_load_deprecated@LIBBPF_0.6.0 1:0.6.0
  bpf_prog_load_xattr@LIBBPF_0.0.1 5.2.6
  bpf_prog_query@LIBBPF_0.0.1 5.2.6
  bpf_prog_test_run@LIBBPF_0.0.1 5.2.6
@@ -176,10 +189,14 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_program__autoload@LIBBPF_0.1.0 1:0.1.0
  bpf_program__bpil_addr_to_offs@LIBBPF_0.0.2 5.2.6
  bpf_program__bpil_offs_to_addr@LIBBPF_0.0.2 5.2.6
+ bpf_program__expected_attach_type@LIBBPF_0.7.0 1:0.7.0
  bpf_program__fd@LIBBPF_0.0.1 5.2.6
+ bpf_program__flags@LIBBPF_0.6.0 1:0.6.0
  bpf_program__get_expected_attach_type@LIBBPF_0.0.6 5.5
  bpf_program__get_prog_info_linear@LIBBPF_0.0.2 5.2.6
  bpf_program__get_type@LIBBPF_0.0.6 5.5
+ bpf_program__insn_cnt@LIBBPF_0.6.0 1:0.6.0
+ bpf_program__insns@LIBBPF_0.6.0 1:0.6.0
  bpf_program__is_extension@LIBBPF_0.0.7 1:0.0.8
  bpf_program__is_kprobe@LIBBPF_0.0.1 5.2.6
  bpf_program__is_lsm@LIBBPF_0.0.8 1:0.0.8
@@ -194,11 +211,13 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_program__is_tracing@LIBBPF_0.0.6 5.5
  bpf_program__is_xdp@LIBBPF_0.0.1 5.2.6
  bpf_program__load@LIBBPF_0.0.1 5.2.6
+ bpf_program__log_buf@LIBBPF_0.7.0 1:0.7.0
+ bpf_program__log_level@LIBBPF_0.7.0 1:0.7.0
  bpf_program__name@LIBBPF_0.0.7 1:0.0.8
  bpf_program__next@LIBBPF_0.0.1 5.2.6
  bpf_program__nth_fd@LIBBPF_0.0.1 5.2.6
  bpf_program__pin@LIBBPF_0.0.1 5.2.6
- bpf_program__pin_instance@LIBBPF_0.0.1 5.2.6
+#MISSING: 1:0.6.0-1# bpf_program__pin_instance@LIBBPF_0.0.1 5.2.6
  bpf_program__prev@LIBBPF_0.0.1 5.2.6
  bpf_program__priv@LIBBPF_0.0.1 5.2.6
  bpf_program__section_name@LIBBPF_0.2.0 1:0.2
@@ -206,8 +225,11 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_program__set_autoload@LIBBPF_0.1.0 1:0.1.0
  bpf_program__set_expected_attach_type@LIBBPF_0.0.1 5.2.6
  bpf_program__set_extension@LIBBPF_0.0.7 1:0.0.8
+ bpf_program__set_flags@LIBBPF_0.6.0 1:0.6.0
  bpf_program__set_ifindex@LIBBPF_0.0.1 5.2.6
  bpf_program__set_kprobe@LIBBPF_0.0.1 5.2.6
+ bpf_program__set_log_buf@LIBBPF_0.7.0 1:0.7.0
+ bpf_program__set_log_level@LIBBPF_0.7.0 1:0.7.0
  bpf_program__set_lsm@LIBBPF_0.0.8 1:0.0.8
  bpf_program__set_perf_event@LIBBPF_0.0.1 5.2.6
  bpf_program__set_prep@LIBBPF_0.0.1 5.2.6
@@ -224,6 +246,7 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_program__set_xdp@LIBBPF_0.0.1 5.2.6
  bpf_program__size@LIBBPF_0.0.6 5.5
  bpf_program__title@LIBBPF_0.0.1 5.2.6
+ bpf_program__type@LIBBPF_0.7.0 1:0.7.0
  bpf_program__unload@LIBBPF_0.0.1 5.2.6
  bpf_program__unpin@LIBBPF_0.0.1 5.2.6
  bpf_program__unpin_instance@LIBBPF_0.0.1 5.2.6
@@ -237,10 +260,16 @@ libbpf.so.0 libbpf0 #MINVER#
  bpf_tc_hook_destroy@LIBBPF_0.4.0 1:0.4.0
  bpf_tc_query@LIBBPF_0.4.0 1:0.4.0
  bpf_verify_program@LIBBPF_0.0.1 5.2.6
+ bpf_xdp_attach@LIBBPF_0.7.0 1:0.7.0
+ bpf_xdp_detach@LIBBPF_0.7.0 1:0.7.0
+ bpf_xdp_query@LIBBPF_0.7.0 1:0.7.0
+ bpf_xdp_query_id@LIBBPF_0.7.0 1:0.7.0
  btf__add_array@LIBBPF_0.2.0 1:0.2
+ btf__add_btf@LIBBPF_0.6.0 1:0.6.0
  btf__add_const@LIBBPF_0.2.0 1:0.2
  btf__add_datasec@LIBBPF_0.2.0 1:0.2
  btf__add_datasec_var_info@LIBBPF_0.2.0 1:0.2
+ btf__add_decl_tag@LIBBPF_0.6.0 1:0.6.0
  btf__add_enum@LIBBPF_0.2.0 1:0.2
  btf__add_enum_value@LIBBPF_0.2.0 1:0.2
  btf__add_field@LIBBPF_0.2.0 1:0.2
@@ -255,6 +284,7 @@ libbpf.so.0 libbpf0 #MINVER#
  btf__add_str@LIBBPF_0.2.0 1:0.2
  btf__add_struct@LIBBPF_0.2.0 1:0.2
  btf__add_type@LIBBPF_0.4.0 1:0.4.0
+ btf__add_type_tag@LIBBPF_0.6.0 1:0.6.0
  btf__add_typedef@LIBBPF_0.2.0 1:0.2
  btf__add_union@LIBBPF_0.2.0 1:0.2
  btf__add_var@LIBBPF_0.2.0 1:0.2
@@ -262,6 +292,8 @@ libbpf.so.0 libbpf0 #MINVER#
  btf__align_of@LIBBPF_0.0.7 1:0.0.8
  btf__base_btf@LIBBPF_0.3.0 1:0.3
  btf__dedup@LIBBPF_0.0.2 5.2.6
+ btf__dedup@LIBBPF_0.6.0 1:0.6.0
+ btf__dedup_deprecated@LIBBPF_0.6.0 1:0.6.0
  btf__endianness@LIBBPF_0.2.0 1:0.2
  btf__fd@LIBBPF_0.0.1 5.2.6
  btf__finalize_data@LIBBPF_0.0.3 5.2.6
@@ -290,6 +322,7 @@ libbpf.so.0 libbpf0 #MINVER#
  btf__parse_raw_split@LIBBPF_0.3.0 1:0.3
  btf__parse_split@LIBBPF_0.3.0 1:0.3
  btf__pointer_size@LIBBPF_0.1.0 1:0.1.0
+ btf__raw_data@LIBBPF_0.6.0 1:0.6.0
  btf__resolve_size@LIBBPF_0.0.1 5.2.6
  btf__resolve_type@LIBBPF_0.0.1 5.2.6
  btf__set_endianness@LIBBPF_0.2.0 1:0.2
@@ -297,11 +330,14 @@ libbpf.so.0 libbpf0 #MINVER#
  btf__set_pointer_size@LIBBPF_0.1.0 1:0.1.0
  btf__str_by_offset@LIBBPF_0.2.0 1:0.2
  btf__type_by_id@LIBBPF_0.0.1 5.2.6
+ btf__type_cnt@LIBBPF_0.6.0 1:0.6.0
  btf_dump__dump_type@LIBBPF_0.0.4 5.3
  btf_dump__dump_type_data@LIBBPF_0.5.0 1:0.5.0
  btf_dump__emit_type_decl@LIBBPF_0.0.7 1:0.0.8
  btf_dump__free@LIBBPF_0.0.4 5.3
  btf_dump__new@LIBBPF_0.0.4 5.3
+ btf_dump__new@LIBBPF_0.6.0 1:0.6.0
+ btf_dump__new_deprecated@LIBBPF_0.6.0 1:0.6.0
  btf_ext__free@LIBBPF_0.0.2 5.2.6
  btf_ext__func_info_rec_size@LIBBPF_0.0.2 5.2.6
  btf_ext__get_raw_data@LIBBPF_0.0.2 5.2.6
@@ -313,11 +349,17 @@ libbpf.so.0 libbpf0 #MINVER#
  libbpf_find_kernel_btf@LIBBPF_0.0.7 1:0.0.8
  libbpf_find_vmlinux_btf_id@LIBBPF_0.0.6 5.5
  libbpf_get_error@LIBBPF_0.0.1 5.2.6
+ libbpf_major_version@LIBBPF_0.6.0 1:0.6.0
+ libbpf_minor_version@LIBBPF_0.6.0 1:0.6.0
  libbpf_num_possible_cpus@LIBBPF_0.0.4 5.3
+ libbpf_probe_bpf_helper@LIBBPF_0.7.0 1:0.7.0
+ libbpf_probe_bpf_map_type@LIBBPF_0.7.0 1:0.7.0
+ libbpf_probe_bpf_prog_type@LIBBPF_0.7.0 1:0.7.0
  libbpf_prog_type_by_name@LIBBPF_0.0.1 5.2.6
  libbpf_set_print@LIBBPF_0.0.1 5.2.6
  libbpf_set_strict_mode@LIBBPF_0.5.0 1:0.5.0
  libbpf_strerror@LIBBPF_0.0.1 5.2.6
+ libbpf_version_string@LIBBPF_0.6.0 1:0.6.0
  perf_buffer__buffer_cnt@LIBBPF_0.2.0 1:0.2
  perf_buffer__buffer_fd@LIBBPF_0.2.0 1:0.2
  perf_buffer__consume@LIBBPF_0.0.9 1:0.0.9
@@ -325,7 +367,11 @@ libbpf.so.0 libbpf0 #MINVER#
  perf_buffer__epoll_fd@LIBBPF_0.2.0 1:0.2
  perf_buffer__free@LIBBPF_0.0.4 5.3
  perf_buffer__new@LIBBPF_0.0.4 5.3
+ perf_buffer__new@LIBBPF_0.6.0 1:0.6.0
+ perf_buffer__new_deprecated@LIBBPF_0.6.0 1:0.6.0
  perf_buffer__new_raw@LIBBPF_0.0.4 5.3
+ perf_buffer__new_raw@LIBBPF_0.6.0 1:0.6.0
+ perf_buffer__new_raw_deprecated@LIBBPF_0.6.0 1:0.6.0
  perf_buffer__poll@LIBBPF_0.0.4 5.3
  ring_buffer__add@LIBBPF_0.0.9 1:0.0.9
  ring_buffer__consume@LIBBPF_0.0.9 1:0.0.9
