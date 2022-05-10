@@ -1,3 +1,9 @@
+libbpf (0.7.0-2~bpo11+1) bullseye-backports; urgency=medium
+
+  * Rebuild for bullseye-backports.
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Tue, 10 May 2022 20:02:49 +0100
+
 libbpf (0.7.0-2) unstable; urgency=medium
 
   * Upload to unstable.
