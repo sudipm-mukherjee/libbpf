@@ -12,6 +12,7 @@ Copyright: 2013-2015 Alexei Starovoitov <ast@kernel.org>
            2019 Netronome Systems, Inc.
            2003-2013 Thomas Graf <tgraf@suug.ch>
            2018-2019 Intel Corporation.
+           2022 Meta Platforms, Inc. and affiliates.
 License:   LGPL-2.1 or BSD-2-Clause
 
 Files:     docs/conf.py
