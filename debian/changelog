@@ -1,3 +1,11 @@
+libbpf (1.0.0-1) experimental; urgency=medium
+
+  * New upstream version 1.0.0
+    - Update SONAME and symbols.
+  * Update Standards-Version to 4.6.1.0
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Fri, 26 Aug 2022 11:26:39 +0100
+
 libbpf (0.8.0-1) unstable; urgency=medium
 
   * New upstream version 0.8.0
