@@ -1,3 +1,9 @@
+libbpf (1.0.1-1) experimental; urgency=medium
+
+  * New upstream version 1.0.1
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Sat, 15 Oct 2022 23:57:54 +0100
+
 libbpf (1.0.0-1) experimental; urgency=medium
 
   * New upstream version 1.0.0
