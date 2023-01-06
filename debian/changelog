@@ -1,3 +1,10 @@
+libbpf (1.1.0-1) unstable; urgency=medium
+
+  * New upstream version 1.1.0
+    - Update symbols.
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Fri, 06 Jan 2023 20:31:46 +0000
+
 libbpf (1.0.1-2) unstable; urgency=medium
 
   * Upload to unstable.
