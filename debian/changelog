@@ -1,3 +1,12 @@
+libbpf (1.2.0-1) experimental; urgency=medium
+
+  * New upstream version 1.2.0
+    - Update copyright.
+    - Update symbols.
+  * Update Standards-Version to 4.6.2
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Sun, 09 Jul 2023 00:58:34 +0100
+
 libbpf (1.1.0-1) unstable; urgency=medium
 
   * New upstream version 1.1.0
