@@ -1,3 +1,9 @@
+libbpf (1.2.2-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Fri, 04 Aug 2023 19:46:30 +0100
+
 libbpf (1.2.2-1) experimental; urgency=medium
 
   * New upstream version 1.2.2
