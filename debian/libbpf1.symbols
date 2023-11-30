@@ -19,6 +19,7 @@ libbpf.so.1 libbpf1 #MINVER#
  LIBBPF_1.0.0@LIBBPF_1.0.0 1:1.0.0
  LIBBPF_1.1.0@LIBBPF_1.1.0 1:1.1.0
  LIBBPF_1.2.0@LIBBPF_1.2.0 1:1.2.0
+ LIBBPF_1.3.0@LIBBPF_1.3.0 1:1.3.0
  bpf_btf_get_fd_by_id@LIBBPF_0.0.1 5.2.6
  bpf_btf_get_fd_by_id_opts@LIBBPF_1.1.0 1:1.1.0
  bpf_btf_get_info_by_fd@LIBBPF_1.2.0 1:1.2.0
@@ -127,6 +128,7 @@ libbpf.so.1 libbpf1 #MINVER#
  bpf_obj_get_info_by_fd@LIBBPF_0.0.1 5.2.6
  bpf_obj_get_opts@LIBBPF_1.0.0 1:1.0.0
  bpf_obj_pin@LIBBPF_0.0.1 5.2.6
+ bpf_obj_pin_opts@LIBBPF_1.3.0 1:1.3.0
  bpf_object__attach_skeleton@LIBBPF_0.0.7 1:0.0.8
  bpf_object__btf@LIBBPF_0.0.2 5.2.6
  bpf_object__btf_fd@LIBBPF_0.0.1 5.2.6
@@ -164,6 +166,7 @@ libbpf.so.1 libbpf1 #MINVER#
  bpf_object__set_kversion@LIBBPF_0.4.0 1:0.4.0
 #MISSING: 1:1.0.0-1# bpf_object__set_priv@LIBBPF_0.0.1 5.2.6
 #MISSING: 1:1.0.0-1# bpf_object__unload@LIBBPF_0.0.1 5.2.6
+ bpf_object__unpin@LIBBPF_1.3.0 1:1.3.0
  bpf_object__unpin_maps@LIBBPF_0.0.1 5.2.6
  bpf_object__unpin_programs@LIBBPF_0.0.1 5.2.6
 #MISSING: 1:1.0.0-1# bpf_perf_event_read_simple@LIBBPF_0.0.1 5.2.6
@@ -177,6 +180,7 @@ libbpf.so.1 libbpf1 #MINVER#
  bpf_prog_bind_map@LIBBPF_0.2.0 1:0.2
  bpf_prog_detach2@LIBBPF_0.0.1 5.2.6
  bpf_prog_detach@LIBBPF_0.0.1 5.2.6
+ bpf_prog_detach_opts@LIBBPF_1.3.0 1:1.3.0
  bpf_prog_get_fd_by_id@LIBBPF_0.0.1 5.2.6
  bpf_prog_get_fd_by_id_opts@LIBBPF_1.1.0 1:1.1.0
  bpf_prog_get_info_by_fd@LIBBPF_1.2.0 1:1.2.0
@@ -203,15 +207,19 @@ libbpf.so.1 libbpf1 #MINVER#
  bpf_program__attach_kprobe_opts@LIBBPF_0.5.0 1:0.5.0
  bpf_program__attach_ksyscall@LIBBPF_1.0.0 1:1.0.0
  bpf_program__attach_lsm@LIBBPF_0.0.8 1:0.0.8
+ bpf_program__attach_netfilter@LIBBPF_1.3.0 1:1.3.0
+ bpf_program__attach_netkit@LIBBPF_1.3.0 1:1.3.0
  bpf_program__attach_netns@LIBBPF_0.0.9 1:0.0.9
  bpf_program__attach_perf_event@LIBBPF_0.0.4 5.3
  bpf_program__attach_perf_event_opts@LIBBPF_0.5.0 1:0.5.0
  bpf_program__attach_raw_tracepoint@LIBBPF_0.0.4 5.3
+ bpf_program__attach_tcx@LIBBPF_1.3.0 1:1.3.0
  bpf_program__attach_trace@LIBBPF_0.0.6 5.5
  bpf_program__attach_trace_opts@LIBBPF_0.8.0 1:0.8.0
  bpf_program__attach_tracepoint@LIBBPF_0.0.4 5.3
  bpf_program__attach_tracepoint_opts@LIBBPF_0.5.0 1:0.5.0
  bpf_program__attach_uprobe@LIBBPF_0.0.4 5.3
+ bpf_program__attach_uprobe_multi@LIBBPF_1.3.0 1:1.3.0
  bpf_program__attach_uprobe_opts@LIBBPF_0.5.0 1:0.5.0
  bpf_program__attach_usdt@LIBBPF_0.8.0 1:0.8.0
  bpf_program__attach_xdp@LIBBPF_0.1.0 1:0.1.0
@@ -414,12 +422,19 @@ libbpf.so.1 libbpf1 #MINVER#
  perf_buffer__new_raw@LIBBPF_0.6.0 1:0.6.0
 #MISSING: 1:1.0.0-1# perf_buffer__new_raw_deprecated@LIBBPF_0.6.0 1:0.6.0
  perf_buffer__poll@LIBBPF_0.0.4 5.3
+ ring__avail_data_size@LIBBPF_1.3.0 1:1.3.0
+ ring__consume@LIBBPF_1.3.0 1:1.3.0
+ ring__consumer_pos@LIBBPF_1.3.0 1:1.3.0
+ ring__map_fd@LIBBPF_1.3.0 1:1.3.0
+ ring__producer_pos@LIBBPF_1.3.0 1:1.3.0
+ ring__size@LIBBPF_1.3.0 1:1.3.0
  ring_buffer__add@LIBBPF_0.0.9 1:0.0.9
  ring_buffer__consume@LIBBPF_0.0.9 1:0.0.9
  ring_buffer__epoll_fd@LIBBPF_0.3.0 1:0.3
  ring_buffer__free@LIBBPF_0.0.9 1:0.0.9
  ring_buffer__new@LIBBPF_0.0.9 1:0.0.9
  ring_buffer__poll@LIBBPF_0.0.9 1:0.0.9
+ ring_buffer__ring@LIBBPF_1.3.0 1:1.3.0
  user_ring_buffer__discard@LIBBPF_1.1.0 1:1.1.0
  user_ring_buffer__free@LIBBPF_1.1.0 1:1.1.0
  user_ring_buffer__new@LIBBPF_1.1.0 1:1.1.0
