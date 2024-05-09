@@ -16,11 +16,28 @@ inputs:
 runs:
   using: "composite"
   steps:
+    # Allow CI user to access /dev/kvm (via qemu) w/o group change/relogin
+    # by changing permissions set by udev.
+    - name: Set /dev/kvm permissions
+      shell: bash
+      run: |
+        if [ -e /dev/kvm ]; then
+          echo "/dev/kvm exists"
+          if [ $(id -u) != 0 ]; then
+            echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' \
+              | sudo tee /etc/udev/rules.d/99-kvm4all.rules > /dev/null
+            sudo udevadm control --reload-rules
+            sudo udevadm trigger --name-match=kvm
+          fi
+        else
+          echo "/dev/kvm does not exist"
+        fi
     # setup environment
     - name: Setup environment
       uses: libbpf/ci/setup-build-env@main
       with:
         pahole: ${{ inputs.pahole }}
+        arch: ${{ inputs.arch }}
     # 1. download CHECKPOINT kernel source
     - name: Get checkpoint commit
       shell: bash
