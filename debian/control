@@ -1,7 +1,7 @@
 Source: libbpf
 Priority: optional
 Maintainer: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-Build-Depends: debhelper-compat (= 13), libelf-dev, zlib1g-dev, pkg-config
+Build-Depends: debhelper-compat (= 13), libelf-dev, zlib1g-dev, pkgconf
 Standards-Version: 4.6.2
 Section: libs
 Vcs-Browser: https://github.com/sudipm-mukherjee/libbpf
