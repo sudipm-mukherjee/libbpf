@@ -1,3 +1,9 @@
+libbpf (1.4.2-1) unstable; urgency=medium
+
+  * New upstream version 1.4.2
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Sat, 25 May 2024 14:38:32 +0100
+
 libbpf (1.4.1-1) unstable; urgency=medium
 
   * New upstream version 1.4.1 (Closes: #1070114)
